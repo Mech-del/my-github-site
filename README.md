@@ -6,3 +6,6 @@
 - I'm taking this course to having fun and learn codeing
 ## What I Want to Build
 -I want to make a game at the end of this course
+
+Collaborator:
+-Dylan, "What is one rule or constraint you think is most important when using AI tools for coding?"

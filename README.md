@@ -9,3 +9,4 @@
 
 Collaborator:
 -Dylan, "What is one rule or constraint you think is most important when using AI tools for coding?"
+-Daniel, You have to be specific in what you are asking or else you will get a general answer.

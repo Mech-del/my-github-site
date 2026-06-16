@@ -4,53 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasiah's Website</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
       :root {
-        --bg: #f5f5f5;
-        --text: #000000;
-        --h1-color: #1F4E79;
-        --h2-color: #2E75B6;
-        --link-color: #0066cc;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text: #1e293b;
+        --text-muted: #64748b;
+        --h1-color: #1e3a8a;
+        --h2-color: #3b82f6;
+        --link-color: #2563eb;
+        --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --accent-glow: rgba(59, 130, 246, 0.15);
       }
 
       :root:has(#dark-mode-toggle:checked) {
-        --bg: #121212;
-        --text: #e0e0e0;
-        --h1-color: #4A90E2;
-        --h2-color: #5B9BD5;
-        --link-color: #6ba4ff;
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --h1-color: #60a5fa;
+        --h2-color: #93c5fd;
+        --link-color: #38bdf8;
+        --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        --accent-glow: rgba(56, 189, 248, 0.15);
       }
 
       body { 
-        font-family: Arial, sans-serif; 
-        max-width: 800px;
+        font-family: 'Inter', sans-serif; 
+        max-width: 700px;
         margin: 0 auto; 
-        padding: 20px; 
+        padding: 40px 20px; 
         background: var(--bg); 
         color: var(--text);
-        transition: background 0.3s, color 0.3s;
+        transition: background 0.4s ease, color 0.4s ease;
       }
 
-      h1 { color: var(--h1-color); }
-      h2 { color: var(--h2-color); border-bottom: 2px solid var(--h2-color); }
-      p  { line-height: 1.6; }
-      a  { color: var(--link-color); }
+      h1 { 
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--h1-color); 
+        margin-bottom: 5px;
+        letter-spacing: -0.025em;
+      }
 
-      /* Styling for your new profile photo */
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+
+      h2 { 
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--h2-color); 
+        margin-top: 0;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* Content Card Styling */
+      .card {
+        background: var(--card-bg);
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px var(--accent-glow);
+      }
+
+      p { 
+        line-height: 1.7; 
+        margin: 0;
+        font-size: 1.05rem;
+      }
+
+      a { 
+        color: var(--link-color); 
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s ease, color 0.2s ease;
+      }
+
+      a:hover {
+        border-color: var(--link-color);
+      }
+
+      /* Profile Photo Frame */
+      .photo-container {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+      }
+
       .profile-photo {
-        display: block;
         max-width: 100%;
         height: auto;
-        width: 250px; /* Adjust this number to change the size */
-        border-radius: 10px; /* Makes the corners slightly rounded */
-        margin-top: 15px;
-        margin-bottom: 15px;
+        width: 280px; 
+        border-radius: 20px; 
+        box-shadow: var(--card-shadow);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
-      .toggle-container {
+      .profile-photo:hover {
+        transform: scale(1.05) rotate(1deg);
+      }
+
+      /* Interactive Button Setup */
+      .btn-container {
+        margin-bottom: 35px;
+      }
+
+      .interactive-btn {
+        background: var(--h2-color);
+        color: #ffffff;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px var(--accent-glow);
+        transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      }
+
+      .interactive-btn:hover {
+        background: var(--h1-color);
+        box-shadow: 0 6px 15px var(--accent-glow);
+      }
+
+      .interactive-btn:active {
+        transform: scale(0.98);
+      }
+
+      /* Header Flex Layout */
+      .header-wrapper {
         display: flex;
-        justify-content: flex-end;
-        padding: 10px 0;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+
+      /* Toggle Theme Switch Styling */
+      .toggle-container {
+        padding: 5px 0;
       }
 
       #dark-mode-toggle {
@@ -59,54 +168,83 @@
 
       .toggle-label {
         cursor: pointer;
-        padding: 10px 20px;
-        background: #1F4E79;
-        color: #ffffff;
-        border-radius: 20px;
-        font-weight: bold;
+        padding: 10px 18px;
+        background: var(--card-bg);
+        color: var(--text);
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.9rem;
         user-select: none;
-        transition: background 0.3s;
+        box-shadow: var(--card-shadow);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      .toggle-label:hover {
+        transform: scale(1.03);
       }
 
       .toggle-label::after {
-        content: " 🌙";
-      }
-
-      #dark-mode-toggle:checked + .toggle-label {
-        background: #5B9BD5;
-        color: #121212;
+        content: "🌙";
       }
 
       #dark-mode-toggle:checked + .toggle-label::after {
-        content: " ☀️";
+        content: "☀️";
       }
     </style>
   </head>
   <body>
-    <div class="toggle-container">
-      <input type="checkbox" id="dark-mode-toggle">
-      <label for="dark-mode-toggle" class="toggle-label">Theme</label>
+
+    <div class="header-wrapper">
+      <h1>Hi, I'm Jasiah McGuire</h1>
+      <div class="toggle-container">
+        <input type="checkbox" id="dark-mode-toggle">
+        <label for="dark-mode-toggle" class="toggle-label">Theme </label>
+      </div>
+    </div>
+    
+    <p class="subtitle">Welcome to my engineering class project website.</p>
+
+    <!-- Interactive Button Element -->
+    <div class="btn-container">
+      <button class="interactive-btn" onclick="sayHello()">Say Hello! 👋</button>
     </div>
 
-    <h1>Hi, I'm Jasiah McGuire</h1>
-        
+    <!-- Grouped Profile Details via Modular Sections -->
+    <div class="card">
+      <h2>About Me</h2>
+      <p>I like to play video games and just talk to people.</p>
+    </div>
+ 
+    <div class="card">
+      <h2>My Interests</h2>
+      <p>I enjoy doing things with friends, and I love to workout.</p>
+    </div>
+ 
+    <div class="card">
+      <h2>My Goals for This Course</h2>
+      <p>I want to learn the fundamentals to eventually make a game.</p>
+    </div>
+ 
+    <div class="card">
+      <h2>My GitHub</h2>
+      <p>Check out my code repositories and track my progress here: 
+        <a href="https://github.com/Mech-del" target="_blank" rel="noopener">Mech-del</a>
+      </p>
+    </div>
 
-    <h2>About Me</h2>
-    <p> I like to play video games and just talk to people.</p>
- 
-    <h2>My Interests</h2>
-    <p> I enjoy doing things with friends, i workout </p>
- 
-    <h2>My Goals for This Course</h2>
-    <p>I want to make a game</p>
- 
-    <h2>My GitHub</h2>
-    <p>Check out my projects: 
-      <a href="https://github.com/Mech-del">Mech-del</a>
-    
+    <div class="photo-container">
       <img src="IMG_20251212_150353.jpg" alt="Photo of Jasiah" class="profile-photo">
-    <p> this is my engineering class project.</p>
+    </div>
+
+    <!-- Pure JS User Interaction Script -->
+    <script>
+      function sayHello() {
+        alert("Thanks for visiting my project site! Feel free to explore my links.");
+      }
+    </script>
     
-    </p>
   </body>
 </html>
